@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<table class="table table-hover" >
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+
+        }
+
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px;
+            text-align: center;
+            border-spacing: 1px;
+            background-color: #f1f1c1;
+        }
+
+  
+    </style>
+    <thread>
+        <tr>
+            <th>S.No.</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Stock</th>
+            <th>Daily Rate</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{movie.id}}</td>
+            <td>
+            <a href="{% url 'movies:detail' movie.id %}">{{movie.title}}</a>
+            </td>
+            <td>{{movie.genre}}</td>
+            <td>{{movie.number_in_stock}}</td>
+            <td>{{movie.daily_rate}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
